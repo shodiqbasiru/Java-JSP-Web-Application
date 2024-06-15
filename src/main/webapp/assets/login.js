@@ -16,9 +16,6 @@ $(document).ready(function () {
             password: {
                 required: "Please enter your password"
             }
-        },
-        submitHandler: function (form) {
-            form.submit();
         }
     });
 });
