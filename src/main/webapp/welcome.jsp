@@ -12,8 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome, <%= application.getAttribute("userId") %>
-        </h1>
+        <h1>Welcome, <%= application.getAttribute("userId") %></h1>
         <table>
             <thead>
             <tr>
@@ -60,6 +59,8 @@
             %>
             </tbody>
         </table>
+
+        <a href="logout" class="logout">Logout</a>
     </div>
     <div id="popup" class="popup">
         <div class="popup-content">

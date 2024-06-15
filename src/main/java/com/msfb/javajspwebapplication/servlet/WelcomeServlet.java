@@ -1,4 +1,4 @@
-package com.msfb.javajspwebapplication;
+package com.msfb.javajspwebapplication.servlet;
 
 import com.msfb.javajspwebapplication.model.Student;
 import jakarta.servlet.ServletConfig;

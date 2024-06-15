@@ -102,3 +102,7 @@ th {
     text-decoration: none;
     cursor: pointer;
 }
+
+.logout {
+    margin: 2rem 0;
+}
