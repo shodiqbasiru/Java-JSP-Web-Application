@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+form {
+    margin: auto;
+    width: 300px;
+    padding: 10px;
+}
+
+form .form-group {
+    margin-bottom: 1rem;
+}
+
+form h1 {
+    text-align: center;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+label.error {
+    color: red;
+}
