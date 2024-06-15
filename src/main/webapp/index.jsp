@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="loginServlet" method="post" id="loginForm">
+        <form action="login" method="post" id="loginForm">
             <h1>Login</h1>
             <div class="form-group">
                 <label for="userId">User ID:</label><br>
@@ -22,6 +22,9 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Login">
+            </div>
+            <div class="form-group">
+                <p style="color:red;"><%= request.getAttribute("errorMessage") != null ? request.getAttribute("errorMessage") : "" %></p>
             </div>
         </form>
     </div>
