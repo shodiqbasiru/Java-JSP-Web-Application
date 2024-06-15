@@ -1,6 +1,7 @@
 package com.msfb.javajspwebapplication.servlet;
 
 import com.msfb.javajspwebapplication.model.Student;
+import com.msfb.javajspwebapplication.service.StudentService;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -10,17 +11,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @WebServlet(name = "welcome", value = "/welcome")
 public class WelcomeServlet extends HttpServlet {
+    private StudentService studentService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        studentService = new StudentService();
         List<Student> students = List.of(
                 new Student("s1", "Ahmad", "Dep 1", 35),
                 new Student("s2", "Benny", "Dep 1", 70),
@@ -33,25 +34,8 @@ public class WelcomeServlet extends HttpServlet {
         );
 
 
-        Map<String, List<Student>> studentsByDepartment = students.stream()
-                .collect(Collectors.groupingBy(Student::getDepartment));
-
-        Map<String, Double> passPercentage = new HashMap<>();
-        for (Map.Entry<String, List<Student>> entry : studentsByDepartment.entrySet()) {
-            String department = entry.getKey();
-            List<Student> studentInDepartment = entry.getValue();
-
-            long passCount = studentInDepartment.stream()
-                    .filter(student -> student.getMark() >= 50)
-                    .count();
-
-            double passPercent = (double) passCount/studentInDepartment.size() *100;
-            passPercentage.put(department, passPercent);
-
-            for (Student student : studentInDepartment) {
-                student.setPassPercentage(passPercent);
-            }
-        }
+        Map<String, List<Student>> studentsByDepartment = studentService.groupStudentsByDepartment(students);
+        studentService.calculatePassPercentage(studentsByDepartment);
 
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("students", students);
